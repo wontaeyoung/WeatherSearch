@@ -13,9 +13,7 @@ protocol Router: URLRequestConvertible {
   var method: HTTPMethod { get }
   var baseURL: String { get }
   var path: String { get }
-  var headers: HTTPHeaders { get }
-  var parameters: Parameters? { get }
-  var body: Data? { get }
+  var parameters: Parameters { get }
 }
 
 extension Router {
@@ -24,16 +22,8 @@ extension Router {
     
     let request = URLRequest(url: url).applied {
       $0.httpMethod = method.rawValue
-      $0.headers = headers
-      $0.httpBody = body
     }
     
-    guard let parameters else { return request }
-    
     return try URLEncoding.default.encode(request, with: parameters)
-  }
-  
-  func requestToBody(_ request: HTTPRequestBody) -> Data? {
-    return try? JsonCoder.shared.encode(from: request)
   }
 }
