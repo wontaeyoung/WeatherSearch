@@ -1,0 +1,63 @@
+//
+//  WeatherViewModel.swift
+//  WeatherSearch
+//
+//  Created by 원태영 on 6/14/24.
+//
+
+import RxSwift
+import RxCocoa
+
+final class WeatherViewModel: ViewModel {
+  
+  // MARK: - I / O
+  struct Input {
+    let viewDidLoadEvent = PublishRelay<Void>()
+  }
+  
+  struct Output {
+    let showError: Driver<DomainError>
+    let city: Driver<City>
+    let currentWeather: Driver<Weather>
+  }
+  
+  // MARK: - Property
+  let disposeBag = DisposeBag()
+  private let currentCity = BehaviorRelay<City>(value: .defaultValue)
+  
+  private let weatherRepository: any WeatherRepository
+  
+  // MARK: - Initializer
+  init(weatherRepository: any WeatherRepository) {
+    self.weatherRepository = weatherRepository
+  }
+  
+  // MARK: - Method
+  func transform(input: Input) -> Output {
+    
+    let showError = PublishRelay<DomainError>()
+    let weathers = PublishRelay<[Weather]>()
+    let currentWeather = PublishRelay<Weather>()
+    
+    input.viewDidLoadEvent
+      .withUnretained(self)
+      .flatMap { owner, _ in
+        return owner.weatherRepository.fetchWeatherForecast(cityID: owner.currentCity.value.id)
+          .catch {
+            showError.accept(owner.toDomainError($0))
+            return .never()
+          }
+      }
+      .map {
+        $0.weathers.sorted { $0.date < $1.date }
+      }
+      .bind(to: weathers)
+      .disposed(by: disposeBag)
+      
+    return Output(
+      showError: showError.asDriver(onErrorJustReturn: .unknown),
+      city: currentCity.asDriver(),
+      currentWeather: currentWeather.asDriver(onErrorJustReturn: .defaultValue)
+    )
+  }
+}

@@ -17,4 +17,18 @@ struct Weather: Entity {
   let cloud: Int
   let wind: Double
   let date: Date
+  
+  static var defaultValue: Weather {
+    return Weather(
+      temp: 0,
+      tempMin: 0,
+      tempMax: 0,
+      icon: "",
+      description: "-",
+      humidity: 0,
+      cloud: 0,
+      wind: 0,
+      date: Date()
+    )
+  }
 }
