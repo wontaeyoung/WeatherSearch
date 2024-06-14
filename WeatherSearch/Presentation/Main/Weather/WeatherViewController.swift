@@ -20,6 +20,7 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   private let paddingView = UIView()
   private let summaryView = WeatherSummaryView()
   private let hourlyForecastView = HourlyForecastView()
+  private let dailyForecastView = DailyForecastView()
   
   // MARK: - Property
   let viewModel: WeatherViewModel
@@ -36,7 +37,7 @@ final class WeatherViewController: BaseViewController, ViewModelController {
     view.addSubviews(backgroundImageView, alphaView, scrollView)
     scrollView.addSubviews(contentView)
     contentView.addSubviews(paddingView)
-    paddingView.addSubviews(summaryView, hourlyForecastView)
+    paddingView.addSubviews(summaryView, hourlyForecastView, dailyForecastView)
   }
   
   override func setConstraint() {
@@ -69,6 +70,11 @@ final class WeatherViewController: BaseViewController, ViewModelController {
     hourlyForecastView.snp.makeConstraints { make in
       make.top.equalTo(summaryView.snp.bottom).offset(20)
       make.horizontalEdges.equalToSuperview()
+    }
+    
+    dailyForecastView.snp.makeConstraints { make in
+      make.top.equalTo(hourlyForecastView.snp.bottom).offset(20)
+      make.horizontalEdges.equalToSuperview()
       make.bottom.equalToSuperview()
     }
   }
@@ -79,31 +85,31 @@ final class WeatherViewController: BaseViewController, ViewModelController {
     
     /// 에러 표시
     output.showError
-      .drive(with: self) { owner, error in
+      .bind(with: self) { owner, error in
         owner.showErrorAlert(error: error)
       }
       .disposed(by: disposeBag)
     
     output.city
-      .asObservable()
       .bind(to: summaryView.city)
       .disposed(by: disposeBag)
     
     output.currentWeather
-      .asObservable()
       .bind(to: summaryView.weather)
       .disposed(by: disposeBag)
     
     output.currentWeather
-      .asObservable()
       .map { $0.main.lowercased() }
       .map { UIImage(named: $0) }
       .bind(to: backgroundImageView.rx.image)
       .disposed(by: disposeBag)
     
     output.weathers3H
-      .asObservable()
       .bind(to: hourlyForecastView.weathers)
+      .disposed(by: disposeBag)
+    
+    output.weathers5D
+      .bind(to: dailyForecastView.weathers)
       .disposed(by: disposeBag)
     
     input.viewDidLoadEvent.accept(())

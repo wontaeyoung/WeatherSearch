@@ -17,10 +17,11 @@ final class WeatherViewModel: ViewModel {
   }
   
   struct Output {
-    let showError: Driver<DomainError>
-    let city: Driver<City>
-    let currentWeather: Driver<Weather>
-    let weathers3H: Driver<[Weather]>
+    let showError: PublishRelay<DomainError>
+    let city: BehaviorRelay<City>
+    let currentWeather: PublishRelay<Weather>
+    let weathers3H: PublishRelay<[Weather]>
+    let weathers5D: PublishRelay<[Weather]>
   }
   
   // MARK: - Property
@@ -39,7 +40,10 @@ final class WeatherViewModel: ViewModel {
     
     let showError = PublishRelay<DomainError>()
     let weathers = PublishRelay<[Weather]>()
+    
     let currentWeather = PublishRelay<Weather>()
+    let weathers3H = PublishRelay<[Weather]>()
+    let weathers5D = PublishRelay<[Weather]>()
     
     /// 날짜 정렬 후 첫 날씨를 현재 날씨로 설정
     weathers
@@ -53,6 +57,26 @@ final class WeatherViewModel: ViewModel {
         return .just(currentWeather)
       }
       .bind(to: currentWeather)
+      .disposed(by: disposeBag)
+    
+    /// 2일간의 날씨만 필터링
+    weathers
+      .map {
+        $0.filter {
+          DateManager.shared.isToday($0.date) || DateManager.shared.isTomorrow($0.date)
+        }
+      }
+      .bind(to: weathers3H)
+      .disposed(by: disposeBag)
+    
+    /// 정오 기준으로 일일 날씨 필터링
+    weathers
+      .map {
+        $0.filter {
+          DateManager.shared.isDate(with: $0.date, by: .hour, equalTo: 12)
+        }
+      }
+      .bind(to: weathers5D)
       .disposed(by: disposeBag)
     
     input.viewDidLoadEvent
@@ -71,10 +95,11 @@ final class WeatherViewModel: ViewModel {
       .disposed(by: disposeBag)
       
     return Output(
-      showError: showError.asDriver(onErrorJustReturn: .unknown),
-      city: currentCity.asDriver(),
-      currentWeather: currentWeather.asDriver(onErrorJustReturn: .defaultValue),
-      weathers3H: weathers.asDriver(onErrorJustReturn: [])
+      showError: showError,
+      city: currentCity,
+      currentWeather: currentWeather,
+      weathers3H: weathers3H,
+      weathers5D: weathers5D
     )
   }
 }

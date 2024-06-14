@@ -52,6 +52,18 @@ extension DateManager {
     return date >= todayStart && date < todayEnd
   }
   
+  func isTomorrow(_ date: Date) -> Bool {
+    let now = Date()
+    let tomorrowStart = calendar.date(byAdding: .day, value: 1, to: startOfDay(when: now)) ?? now
+    let dayAfterTomorrowStart = calendar.date(byAdding: .day, value: 2, to: startOfDay(when: now)) ?? now
+    
+    return date >= tomorrowStart && date < dayAfterTomorrowStart
+  }
+  
+  func isDate(with date: Date, by component: Calendar.Component, equalTo: Int) -> Bool {
+    return calendar.component(component, from: date) == equalTo
+  }
+  
   enum Format: String {
     case HHHour = "HH시"
     case EEE = "EEE"

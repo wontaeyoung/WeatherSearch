@@ -41,7 +41,6 @@ final class WeatherCollectionCell: BaseCollectionViewCell {
   }
   
   func updateUI(with weather: Weather) {
-    print("@@", DateManager.shared.toString(from: weather.date, format: .HHHour))
     timeLabel.text = DateManager.shared.toString(from: weather.date, format: .HHHour)
     iconImageView.image = UIImage(named: weather.icon)
     temperatureLabel.text = weather.temp.toTempString

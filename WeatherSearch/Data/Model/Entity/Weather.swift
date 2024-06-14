@@ -24,7 +24,7 @@ struct Weather: Entity {
       temp: 0,
       tempMin: 0,
       tempMax: 0,
-      icon: "",
+      icon: "01d",
       main: "",
       description: "-",
       humidity: 0,
