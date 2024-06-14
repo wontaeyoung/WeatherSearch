@@ -16,27 +16,26 @@ final class WeatherSummaryView: BaseView {
   let weather = PublishRelay<Weather>()
   
   // MARK: - UI
-  private let cityNameLabel = UILabel().configured {
+  private let cityNameLabel = WSLabel().configured {
     $0.font = .systemFont(ofSize: 32, weight: .semibold)
     $0.textAlignment = .center
   }
   
-  private let temperatureLabel = UILabel().configured {
+  private let temperatureLabel = WSLabel().configured {
     $0.font = .systemFont(ofSize: 80, weight: .semibold)
     $0.textAlignment = .center
   }
   
-  private let weatherDescriptionLabel = UILabel().configured {
+  private let weatherDescriptionLabel = WSLabel().configured {
     $0.font = .systemFont(ofSize: 20, weight: .semibold)
     $0.textAlignment = .center
   }
   
-  private let temperatureGapLabel = UILabel().configured {
+  private let temperatureGapLabel = WSLabel().configured {
     $0.font = .systemFont(ofSize: 20, weight: .semibold)
     $0.textAlignment = .center
   }
 
-  
   // MARK: - Life Cycle
   override func setHierarchy() {
     addSubviews(
