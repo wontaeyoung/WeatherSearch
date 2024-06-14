@@ -13,7 +13,7 @@ final class HTTPService {
   
   private let session = Session()
   
-  func callRequest<T: DTO>(with router: Router, of type: T.Type) -> Single<T> {
+  func callRequest<T: DTO>(with router: any Router, of type: T.Type) -> Single<T> {
     return session
       .request(router)
       .rx
