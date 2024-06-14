@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 final class JsonService {
-  func parse<T: DTO>(file: Constant.File, fileExtension: Constant.FileExtension, type: T.Type) -> Single<T> {
+  func parse<T: Decodable>(file: Constant.File, fileExtension: Constant.FileExtension, type: T.Type) -> Single<T> {
     return Single.create { single in
       guard 
         let path = Bundle.main.path(forResource: file.rawValue, ofType: fileExtension.rawValue),
