@@ -34,7 +34,8 @@
 		6E86601E2C1C1BC2005DF94F /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E86601D2C1C1BC2005DF94F /* APIKey.swift */; };
 		6E8660202C1C1C51005DF94F /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E86601F2C1C1C51005DF94F /* HTTPError.swift */; };
 		6E8660222C1C1C8E005DF94F /* JsonCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8660212C1C1C8E005DF94F /* JsonCoder.swift */; };
-		6E8660262C1C1D04005DF94F /* HTTPRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8660252C1C1D04005DF94F /* HTTPRequestBody.swift */; };
+		6E8660282C1C1D63005DF94F /* WeatherRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8660272C1C1D63005DF94F /* WeatherRouter.swift */; };
+		6E86602A2C1C1F98005DF94F /* HTTPParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8660292C1C1F97005DF94F /* HTTPParameter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +66,8 @@
 		6E86601D2C1C1BC2005DF94F /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		6E86601F2C1C1C51005DF94F /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		6E8660212C1C1C8E005DF94F /* JsonCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCoder.swift; sourceTree = "<group>"; };
-		6E8660252C1C1D04005DF94F /* HTTPRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestBody.swift; sourceTree = "<group>"; };
+		6E8660272C1C1D63005DF94F /* WeatherRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRouter.swift; sourceTree = "<group>"; };
+		6E8660292C1C1F97005DF94F /* HTTPParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParameter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				6E8660192C1C1B44005DF94F /* Protocol */,
+				6E8660272C1C1D63005DF94F /* WeatherRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -285,18 +288,10 @@
 		6E86601C2C1C1BBB005DF94F /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				6E8660242C1C1CE9005DF94F /* RequestBody */,
 				6E86601D2C1C1BC2005DF94F /* APIKey.swift */,
+				6E8660292C1C1F97005DF94F /* HTTPParameter.swift */,
 			);
 			path = Component;
-			sourceTree = "<group>";
-		};
-		6E8660242C1C1CE9005DF94F /* RequestBody */ = {
-			isa = PBXGroup;
-			children = (
-				6E8660252C1C1D04005DF94F /* HTTPRequestBody.swift */,
-			);
-			path = RequestBody;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +376,7 @@
 				6E865FFB2C1C0A4D005DF94F /* Forecast.swift in Sources */,
 				6E8660082C1C15F6005DF94F /* TimeInterval+.swift in Sources */,
 				6E86600D2C1C16BF005DF94F /* Constant.swift in Sources */,
+				6E86602A2C1C1F98005DF94F /* HTTPParameter.swift in Sources */,
 				6E865FCB2C1BFEDA005DF94F /* ViewController.swift in Sources */,
 				6E865FFF2C1C0B4A005DF94F /* WeatherDTO.swift in Sources */,
 				6E865FFD2C1C0A90005DF94F /* CityDTO.swift in Sources */,
@@ -390,7 +386,6 @@
 				6E865FF42C1C087D005DF94F /* City.swift in Sources */,
 				6E86600A2C1C1670005DF94F /* Double+.swift in Sources */,
 				6E865FC72C1BFEDA005DF94F /* AppDelegate.swift in Sources */,
-				6E8660262C1C1D04005DF94F /* HTTPRequestBody.swift in Sources */,
 				6E86600F2C1C17B5005DF94F /* Int+.swift in Sources */,
 				6E8660022C1C0F82005DF94F /* DateManager.swift in Sources */,
 				6E86601E2C1C1BC2005DF94F /* APIKey.swift in Sources */,
@@ -401,6 +396,7 @@
 				6E865FC92C1BFEDA005DF94F /* SceneDelegate.swift in Sources */,
 				6E865FEE2C1C077E005DF94F /* DTO.swift in Sources */,
 				6E865FF92C1C0925005DF94F /* Weather.swift in Sources */,
+				6E8660282C1C1D63005DF94F /* WeatherRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
