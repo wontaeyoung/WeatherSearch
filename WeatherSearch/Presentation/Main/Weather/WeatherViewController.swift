@@ -75,5 +75,7 @@ final class WeatherViewController: BaseViewController, ViewModelController {
       .asObservable()
       .bind(to: summaryView.weather)
       .disposed(by: disposeBag)
+    
+    input.viewDidLoadEvent.accept(())
   }
 }

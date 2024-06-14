@@ -39,6 +39,18 @@ final class WeatherViewModel: ViewModel {
     let weathers = PublishRelay<[Weather]>()
     let currentWeather = PublishRelay<Weather>()
     
+    weathers
+      .withUnretained(self)
+      .flatMap { owner, weathers in
+        guard let currentWeather = weathers.first else {
+          showError.accept(.invalidRequest)
+          return Single<Weather>.never()
+        }
+        return .just(currentWeather)
+      }
+      .bind(to: currentWeather)
+      .disposed(by: disposeBag)
+    
     input.viewDidLoadEvent
       .withUnretained(self)
       .flatMap { owner, _ in

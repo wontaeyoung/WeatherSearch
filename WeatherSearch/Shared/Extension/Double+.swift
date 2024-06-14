@@ -11,6 +11,6 @@ extension Double {
   }
   
   var toCelsius: Double {
-    return self - Constant.celsiusBuffer
+    return self - Constant.Weather.celsiusBuffer
   }
 }
