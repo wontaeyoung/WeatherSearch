@@ -14,6 +14,7 @@
 		6E865FD32C1BFEDC005DF94F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6E865FD22C1BFEDC005DF94F /* Base */; };
 		6E865FDF2C1C01E0005DF94F /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6E865FDE2C1C01E0005DF94F /* RxAlamofire */; };
 		6E865FE22C1C0222005DF94F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6E865FE12C1C0222005DF94F /* SnapKit */; };
+		6E865FE42C1C0298005DF94F /* citylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E865FE32C1C0298005DF94F /* citylist.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6E865FCF2C1BFEDC005DF94F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E865FD22C1BFEDC005DF94F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E865FD42C1BFEDC005DF94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E865FE32C1C0298005DF94F /* citylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = citylist.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				6E865FC82C1BFEDA005DF94F /* SceneDelegate.swift */,
 				6E865FCA2C1BFEDA005DF94F /* ViewController.swift */,
 				6E865FCF2C1BFEDC005DF94F /* Assets.xcassets */,
+				6E865FE32C1C0298005DF94F /* citylist.json */,
 				6E865FD12C1BFEDC005DF94F /* LaunchScreen.storyboard */,
 				6E865FD42C1BFEDC005DF94F /* Info.plist */,
 			);
@@ -136,6 +139,7 @@
 			files = (
 				6E865FD02C1BFEDC005DF94F /* Assets.xcassets in Resources */,
 				6E865FD32C1BFEDC005DF94F /* Base in Resources */,
+				6E865FE42C1C0298005DF94F /* citylist.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
