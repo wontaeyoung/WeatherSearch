@@ -60,15 +60,55 @@
 		6E865FC52C1BFEDA005DF94F /* WeatherSearch */ = {
 			isa = PBXGroup;
 			children = (
-				6E865FC62C1BFEDA005DF94F /* AppDelegate.swift */,
-				6E865FC82C1BFEDA005DF94F /* SceneDelegate.swift */,
-				6E865FCA2C1BFEDA005DF94F /* ViewController.swift */,
-				6E865FCF2C1BFEDC005DF94F /* Assets.xcassets */,
-				6E865FE32C1C0298005DF94F /* citylist.json */,
-				6E865FD12C1BFEDC005DF94F /* LaunchScreen.storyboard */,
-				6E865FD42C1BFEDC005DF94F /* Info.plist */,
+				6E865FE92C1C03B9005DF94F /* Shared */,
+				6E865FE82C1C03B5005DF94F /* Resource */,
+				6E865FE72C1C03A4005DF94F /* Presentation */,
+				6E865FE62C1C039D005DF94F /* Data */,
+				6E865FE52C1C0394005DF94F /* App */,
 			);
 			path = WeatherSearch;
+			sourceTree = "<group>";
+		};
+		6E865FE52C1C0394005DF94F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6E865FD42C1BFEDC005DF94F /* Info.plist */,
+				6E865FD12C1BFEDC005DF94F /* LaunchScreen.storyboard */,
+				6E865FC62C1BFEDA005DF94F /* AppDelegate.swift */,
+				6E865FC82C1BFEDA005DF94F /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6E865FE62C1C039D005DF94F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		6E865FE72C1C03A4005DF94F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				6E865FCA2C1BFEDA005DF94F /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		6E865FE82C1C03B5005DF94F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6E865FCF2C1BFEDC005DF94F /* Assets.xcassets */,
+				6E865FE32C1C0298005DF94F /* citylist.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		6E865FE92C1C03B9005DF94F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +338,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 75QZ7682T2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherSearch/Info.plist;
+				INFOPLIST_FILE = WeatherSearch/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -330,7 +370,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 75QZ7682T2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeatherSearch/Info.plist;
+				INFOPLIST_FILE = WeatherSearch/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
