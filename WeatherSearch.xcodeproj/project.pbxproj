@@ -46,6 +46,8 @@
 		6E8660432C1C2B95005DF94F /* citylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E8660422C1C2B95005DF94F /* citylist.json */; };
 		6E86604A2C1C2D0F005DF94F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8660492C1C2D0F005DF94F /* ViewModel.swift */; };
 		6E86604C2C1C2D33005DF94F /* ViewModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E86604B2C1C2D33005DF94F /* ViewModelController.swift */; };
+		6E86604E2C1C2D5F005DF94F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E86604D2C1C2D5F005DF94F /* BaseViewController.swift */; };
+		6E8660502C1C2D6C005DF94F /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E86604F2C1C2D6C005DF94F /* BaseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		6E8660422C1C2B95005DF94F /* citylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = citylist.json; sourceTree = "<group>"; };
 		6E8660492C1C2D0F005DF94F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		6E86604B2C1C2D33005DF94F /* ViewModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelController.swift; sourceTree = "<group>"; };
+		6E86604D2C1C2D5F005DF94F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		6E86604F2C1C2D6C005DF94F /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +395,8 @@
 		6E8660472C1C2CE1005DF94F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				6E86604D2C1C2D5F005DF94F /* BaseViewController.swift */,
+				6E86604F2C1C2D6C005DF94F /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -487,7 +493,9 @@
 				6E8660082C1C15F6005DF94F /* TimeInterval+.swift in Sources */,
 				6E86600D2C1C16BF005DF94F /* Constant.swift in Sources */,
 				6E86602A2C1C1F98005DF94F /* HTTPParameter.swift in Sources */,
+				6E8660502C1C2D6C005DF94F /* BaseTableViewCell.swift in Sources */,
 				6E865FCB2C1BFEDA005DF94F /* ViewController.swift in Sources */,
+				6E86604E2C1C2D5F005DF94F /* BaseViewController.swift in Sources */,
 				6E865FFF2C1C0B4A005DF94F /* WeatherDTO.swift in Sources */,
 				6E865FFD2C1C0A90005DF94F /* CityDTO.swift in Sources */,
 				6E86601B2C1C1B49005DF94F /* Router.swift in Sources */,
