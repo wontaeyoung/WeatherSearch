@@ -14,7 +14,11 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   
   // MARK: - UI
   private let backgroundImageView = UIImageView()
-  private let alphaView = UIView().configured { $0.backgroundColor = .black.withAlphaComponent(0.2) }
+  private let alphaView = UIView().configured { $0.backgroundColor = .black.withAlphaComponent(0.5) }
+  private let searchBar = UISearchBar()
+  private let searchButton = UIButton().configured {
+    $0.backgroundColor = .clear
+  }
   private let scrollView = UIScrollView()
   private let contentView = UIView()
   private let paddingView = UIView()
@@ -24,6 +28,7 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   
   // MARK: - Property
   let viewModel: WeatherViewModel
+  private let selectedCity = PublishRelay<City>()
   
   // MARK: - Initializer
   init(viewModel: WeatherViewModel) {
@@ -34,10 +39,16 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   
   // MARK: - Life Cycle
   override func setHierarchy() {
-    view.addSubviews(backgroundImageView, alphaView, scrollView)
+    view.addSubviews(
+      backgroundImageView,
+      alphaView,
+      searchBar,
+      searchButton,
+      scrollView
+    )
     scrollView.addSubviews(contentView)
     contentView.addSubviews(paddingView)
-    paddingView.addSubviews(summaryView, hourlyForecastView, dailyForecastView)
+    paddingView.addSubviews(summaryView)
   }
   
   override func setConstraint() {
@@ -49,8 +60,19 @@ final class WeatherViewController: BaseViewController, ViewModelController {
       make.edges.equalToSuperview()
     }
     
+    searchBar.snp.makeConstraints { make in
+      make.top.equalTo(view.safeAreaLayoutGuide)
+      make.horizontalEdges.equalToSuperview().inset(20)
+    }
+    
+    searchButton.snp.makeConstraints { make in
+      make.edges.equalTo(searchBar)
+    }
+    
     scrollView.snp.makeConstraints { make in
-      make.edges.equalTo(view.safeAreaLayoutGuide)
+      make.top.equalTo(searchBar.snp.bottom)
+      make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+      make.bottom.equalTo(view.safeAreaLayoutGuide)
     }
     
     contentView.snp.makeConstraints { make in
@@ -64,16 +86,6 @@ final class WeatherViewController: BaseViewController, ViewModelController {
     
     summaryView.snp.makeConstraints { make in
       make.top.equalToSuperview()
-      make.horizontalEdges.equalToSuperview()
-    }
-    
-    hourlyForecastView.snp.makeConstraints { make in
-      make.top.equalTo(summaryView.snp.bottom).offset(20)
-      make.horizontalEdges.equalToSuperview()
-    }
-    
-    dailyForecastView.snp.makeConstraints { make in
-      make.top.equalTo(hourlyForecastView.snp.bottom).offset(20)
       make.horizontalEdges.equalToSuperview()
       make.bottom.equalToSuperview()
     }
@@ -113,5 +125,19 @@ final class WeatherViewController: BaseViewController, ViewModelController {
       .disposed(by: disposeBag)
     
     input.viewDidLoadEvent.accept(())
+    
+    searchButton.rx.tap
+      .bind(with: self) { owner, _ in
+        owner.showSearchCityView(selectedCity: owner.selectedCity)
+      }
+      .disposed(by: disposeBag)
+  }
+  
+  private func showSearchCityView(selectedCity: PublishRelay<City>) {
+    let vm = SearchCityViewModel(cityRepository: DIContainer.cityRepository)
+    let vc = SearchCityViewController(viewModel: vm, selectedCity: selectedCity)
+      .hideBackTitle()
+    
+    push(vc)
   }
 }

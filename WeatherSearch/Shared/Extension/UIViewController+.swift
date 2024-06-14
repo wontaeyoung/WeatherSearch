@@ -65,4 +65,9 @@ extension UIViewController {
     self.navigationItem.setHidesBackButton(true, animated: false)
     return self
   }
+  
+  func hideBackTitle() -> Self {
+    self.navigationItem.backButtonTitle = ""
+    return self
+  }
 }

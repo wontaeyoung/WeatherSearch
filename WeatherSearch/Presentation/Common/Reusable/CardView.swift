@@ -10,7 +10,7 @@ import SnapKit
 
 final class CardView: BaseView {
   override func setAttribute() {
-    self.backgroundColor = .black.withAlphaComponent(0.2)
+    self.backgroundColor = .black.withAlphaComponent(0.8)
     
     self.configure {
       $0.clipsToBounds = true
