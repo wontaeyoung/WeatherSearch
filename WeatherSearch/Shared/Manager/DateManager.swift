@@ -35,6 +35,12 @@ extension DateManager {
     return dateFormatter.string(from: interval.date)
   }
   
+  func toString(from date: Date, format: Format) -> String {
+    dateFormatter.dateFormat = format.format
+    
+    return dateFormatter.string(from: date)
+  }
+  
   func startOfDay(when date: Date) -> Date {
     return calendar.startOfDay(for: date)
   }

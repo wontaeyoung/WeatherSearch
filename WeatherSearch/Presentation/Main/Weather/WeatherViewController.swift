@@ -19,6 +19,7 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   private let contentView = UIView()
   private let paddingView = UIView()
   private let summaryView = WeatherSummaryView()
+  private let hourlyForecastView = HourlyForecastView()
   
   // MARK: - Property
   let viewModel: WeatherViewModel
@@ -35,7 +36,7 @@ final class WeatherViewController: BaseViewController, ViewModelController {
     view.addSubviews(backgroundImageView, alphaView, scrollView)
     scrollView.addSubviews(contentView)
     contentView.addSubviews(paddingView)
-    paddingView.addSubviews(summaryView)
+    paddingView.addSubviews(summaryView, hourlyForecastView)
   }
   
   override func setConstraint() {
@@ -57,11 +58,18 @@ final class WeatherViewController: BaseViewController, ViewModelController {
     }
     
     paddingView.snp.makeConstraints { make in
-      make.edges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+      make.edges.equalToSuperview().inset(16)
     }
     
     summaryView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
+      make.top.equalToSuperview()
+      make.horizontalEdges.equalToSuperview()
+    }
+    
+    hourlyForecastView.snp.makeConstraints { make in
+      make.top.equalTo(summaryView.snp.bottom).offset(20)
+      make.horizontalEdges.equalToSuperview()
+      make.bottom.equalToSuperview()
     }
   }
   
@@ -91,6 +99,11 @@ final class WeatherViewController: BaseViewController, ViewModelController {
       .map { $0.main.lowercased() }
       .map { UIImage(named: $0) }
       .bind(to: backgroundImageView.rx.image)
+      .disposed(by: disposeBag)
+    
+    output.weathers3H
+      .asObservable()
+      .bind(to: hourlyForecastView.weathers)
       .disposed(by: disposeBag)
     
     input.viewDidLoadEvent.accept(())

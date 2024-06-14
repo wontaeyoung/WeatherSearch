@@ -20,6 +20,7 @@ final class WeatherViewModel: ViewModel {
     let showError: Driver<DomainError>
     let city: Driver<City>
     let currentWeather: Driver<Weather>
+    let weathers3H: Driver<[Weather]>
   }
   
   // MARK: - Property
@@ -72,7 +73,8 @@ final class WeatherViewModel: ViewModel {
     return Output(
       showError: showError.asDriver(onErrorJustReturn: .unknown),
       city: currentCity.asDriver(),
-      currentWeather: currentWeather.asDriver(onErrorJustReturn: .defaultValue)
+      currentWeather: currentWeather.asDriver(onErrorJustReturn: .defaultValue),
+      weathers3H: weathers.asDriver(onErrorJustReturn: [])
     )
   }
 }
