@@ -11,4 +11,8 @@ extension Int {
   var toInterval: TimeInterval {
     return TimeInterval(self)
   }
+  
+  var toTempString: String {
+    return "\(self)°"
+  }
 }
