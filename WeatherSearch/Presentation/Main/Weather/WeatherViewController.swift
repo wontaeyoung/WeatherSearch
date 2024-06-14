@@ -56,6 +56,24 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   }
   
   override func bind() {
+    let input = WeatherViewModel.Input()
+    let output = viewModel.transform(input: input)
     
+    /// 에러 표시
+    output.showError
+      .drive(with: self) { owner, error in
+        owner.showErrorAlert(error: error)
+      }
+      .disposed(by: disposeBag)
+    
+    output.city
+      .asObservable()
+      .bind(to: summaryView.city)
+      .disposed(by: disposeBag)
+    
+    output.currentWeather
+      .asObservable()
+      .bind(to: summaryView.weather)
+      .disposed(by: disposeBag)
   }
 }
