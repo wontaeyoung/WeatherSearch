@@ -12,6 +12,8 @@
 		6E865FCB2C1BFEDA005DF94F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E865FCA2C1BFEDA005DF94F /* ViewController.swift */; };
 		6E865FD02C1BFEDC005DF94F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E865FCF2C1BFEDC005DF94F /* Assets.xcassets */; };
 		6E865FD32C1BFEDC005DF94F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 6E865FD22C1BFEDC005DF94F /* Base */; };
+		6E865FDF2C1C01E0005DF94F /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6E865FDE2C1C01E0005DF94F /* RxAlamofire */; };
+		6E865FE22C1C0222005DF94F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6E865FE12C1C0222005DF94F /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E865FDF2C1C01E0005DF94F /* RxAlamofire in Frameworks */,
+				6E865FE22C1C0222005DF94F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +84,10 @@
 			dependencies = (
 			);
 			name = WeatherSearch;
+			packageProductDependencies = (
+				6E865FDE2C1C01E0005DF94F /* RxAlamofire */,
+				6E865FE12C1C0222005DF94F /* SnapKit */,
+			);
 			productName = WeatherSearch;
 			productReference = 6E865FC32C1BFEDA005DF94F /* WeatherSearch.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +116,10 @@
 				Base,
 			);
 			mainGroup = 6E865FBA2C1BFEDA005DF94F;
+			packageReferences = (
+				6E865FDD2C1C01E0005DF94F /* XCRemoteSwiftPackageReference "RxAlamofire" */,
+				6E865FE02C1C0222005DF94F /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 6E865FC42C1BFEDA005DF94F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -359,6 +371,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6E865FDD2C1C01E0005DF94F /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire";
+			requirement = {
+				kind = exactVersion;
+				version = 6.1.2;
+			};
+		};
+		6E865FE02C1C0222005DF94F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6E865FDE2C1C01E0005DF94F /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6E865FDD2C1C01E0005DF94F /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
+		};
+		6E865FE12C1C0222005DF94F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6E865FE02C1C0222005DF94F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6E865FBB2C1BFEDA005DF94F /* Project object */;
 }
