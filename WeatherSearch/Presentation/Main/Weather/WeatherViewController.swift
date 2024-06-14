@@ -15,7 +15,9 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   // MARK: - UI
   private let backgroundImageView = UIImageView()
   private let alphaView = UIView().configured { $0.backgroundColor = .black.withAlphaComponent(0.5) }
-  private let searchBar = UISearchBar()
+  private let searchBar = UISearchBar().configured {
+    $0.placeholder = "도시 이름을 검색하세요"
+  }
   private let searchButton = UIButton().configured {
     $0.backgroundColor = .clear
   }
@@ -140,7 +142,6 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   private func showSearchCityView(selectedCity: PublishRelay<City>) {
     let vm = SearchCityViewModel(cityRepository: DIContainer.cityRepository)
     let vc = SearchCityViewController(viewModel: vm, selectedCity: selectedCity)
-      .hideBackTitle()
     
     push(vc)
   }

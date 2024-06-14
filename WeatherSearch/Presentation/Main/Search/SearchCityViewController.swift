@@ -77,7 +77,6 @@ final class SearchCityViewController: BaseViewController, ViewModelController {
     
     searchBar.rx.text.orEmpty
       .distinctUntilChanged()
-      .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
       .bind(to: input.query)
       .disposed(by: disposeBag)
     
