@@ -13,6 +13,8 @@ import RxCocoa
 final class WeatherViewController: BaseViewController, ViewModelController {
   
   // MARK: - UI
+  private let backgroundImageView = UIImageView()
+  private let alphaView = UIView().configured { $0.backgroundColor = .black.withAlphaComponent(0.2) }
   private let scrollView = UIScrollView()
   private let contentView = UIView()
   private let paddingView = UIView()
@@ -30,13 +32,21 @@ final class WeatherViewController: BaseViewController, ViewModelController {
   
   // MARK: - Life Cycle
   override func setHierarchy() {
-    view.addSubviews(scrollView)
+    view.addSubviews(backgroundImageView, alphaView, scrollView)
     scrollView.addSubviews(contentView)
     contentView.addSubviews(paddingView)
     paddingView.addSubviews(summaryView)
   }
   
   override func setConstraint() {
+    backgroundImageView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+    
+    alphaView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+    
     scrollView.snp.makeConstraints { make in
       make.edges.equalTo(view.safeAreaLayoutGuide)
     }
@@ -74,6 +84,13 @@ final class WeatherViewController: BaseViewController, ViewModelController {
     output.currentWeather
       .asObservable()
       .bind(to: summaryView.weather)
+      .disposed(by: disposeBag)
+    
+    output.currentWeather
+      .asObservable()
+      .map { $0.main.lowercased() }
+      .map { UIImage(named: $0) }
+      .bind(to: backgroundImageView.rx.image)
       .disposed(by: disposeBag)
     
     input.viewDidLoadEvent.accept(())

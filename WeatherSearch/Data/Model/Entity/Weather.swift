@@ -12,6 +12,7 @@ struct Weather: Entity {
   let tempMin: Int
   let tempMax: Int
   let icon: String
+  let main: String
   let description: String
   let humidity: Int
   let cloud: Int
@@ -24,6 +25,7 @@ struct Weather: Entity {
       tempMin: 0,
       tempMax: 0,
       icon: "",
+      main: "",
       description: "-",
       humidity: 0,
       cloud: 0,

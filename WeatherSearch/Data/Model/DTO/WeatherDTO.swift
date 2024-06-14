@@ -22,6 +22,7 @@ struct WeatherDTO: DTO {
       tempMin: main.temp_min.toCelsius.asInt,
       tempMax: main.temp_max.toCelsius.asInt,
       icon: weatherInfo.icon,
+      main: weatherInfo.main,
       description: weatherInfo.description,
       humidity: main.humidity,
       cloud: clouds.all,

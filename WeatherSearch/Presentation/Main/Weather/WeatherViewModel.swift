@@ -5,6 +5,7 @@
 //  Created by 원태영 on 6/14/24.
 //
 
+import Foundation
 import RxSwift
 import RxCocoa
 
@@ -39,6 +40,7 @@ final class WeatherViewModel: ViewModel {
     let weathers = PublishRelay<[Weather]>()
     let currentWeather = PublishRelay<Weather>()
     
+    /// 날짜 정렬 후 첫 날씨를 현재 날씨로 설정
     weathers
       .withUnretained(self)
       .flatMap { owner, weathers in
@@ -46,6 +48,7 @@ final class WeatherViewModel: ViewModel {
           showError.accept(.invalidRequest)
           return Single<Weather>.never()
         }
+        dump(currentWeather)
         return .just(currentWeather)
       }
       .bind(to: currentWeather)
