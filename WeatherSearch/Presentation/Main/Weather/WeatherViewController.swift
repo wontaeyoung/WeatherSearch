@@ -131,6 +131,10 @@ final class WeatherViewController: BaseViewController, ViewModelController {
         owner.showSearchCityView(selectedCity: owner.selectedCity)
       }
       .disposed(by: disposeBag)
+    
+    selectedCity
+      .bind(to: input.searchNewCityEvent)
+      .disposed(by: disposeBag)
   }
   
   private func showSearchCityView(selectedCity: PublishRelay<City>) {

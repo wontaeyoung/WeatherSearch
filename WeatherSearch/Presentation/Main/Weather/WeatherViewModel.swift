@@ -14,11 +14,12 @@ final class WeatherViewModel: ViewModel {
   // MARK: - I / O
   struct Input {
     let viewDidLoadEvent = PublishRelay<Void>()
+    let searchNewCityEvent = PublishRelay<City>()
   }
   
   struct Output {
     let showError: PublishRelay<DomainError>
-    let city: BehaviorRelay<City>
+    let city: PublishRelay<City>
     let currentWeather: PublishRelay<Weather>
     let weathers3H: PublishRelay<[Weather]>
     let weathers5D: PublishRelay<[Weather]>
@@ -26,7 +27,7 @@ final class WeatherViewModel: ViewModel {
   
   // MARK: - Property
   let disposeBag = DisposeBag()
-  private let currentCity = BehaviorRelay<City>(value: .defaultValue)
+  private let currentCity = PublishRelay<City>()
   
   private let weatherRepository: any WeatherRepository
   
@@ -44,6 +45,22 @@ final class WeatherViewModel: ViewModel {
     let currentWeather = PublishRelay<Weather>()
     let weathers3H = PublishRelay<[Weather]>()
     let weathers5D = PublishRelay<[Weather]>()
+    
+    /// 현재 도시가 변경되면 새로운 날씨 요청
+    currentCity
+      .withUnretained(self)
+      .flatMap { owner, city in
+        return owner.weatherRepository.fetchWeatherForecast(cityID: city.id)
+          .catch {
+            showError.accept(owner.toDomainError($0))
+            return .never()
+          }
+      }
+      .map {
+        $0.weathers.sorted { $0.date < $1.date }
+      }
+      .bind(to: weathers)
+      .disposed(by: disposeBag)
     
     /// 날짜 정렬 후 첫 날씨를 현재 날씨로 설정
     weathers
@@ -80,18 +97,12 @@ final class WeatherViewModel: ViewModel {
       .disposed(by: disposeBag)
     
     input.viewDidLoadEvent
-      .withUnretained(self)
-      .flatMap { owner, _ in
-        return owner.weatherRepository.fetchWeatherForecast(cityID: owner.currentCity.value.id)
-          .catch {
-            showError.accept(owner.toDomainError($0))
-            return .never()
-          }
-      }
-      .map {
-        $0.weathers.sorted { $0.date < $1.date }
-      }
-      .bind(to: weathers)
+      .map { City.defaultValue }
+      .bind(to: currentCity)
+      .disposed(by: disposeBag)
+    
+    input.searchNewCityEvent
+      .bind(to: currentCity)
       .disposed(by: disposeBag)
       
     return Output(
