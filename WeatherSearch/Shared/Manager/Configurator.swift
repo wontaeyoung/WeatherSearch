@@ -41,3 +41,4 @@ extension Dictionary: Configurator { }
 extension Set: Configurator { }
 
 extension Calendar: Configurator { }
+extension URLRequest: Configurator { }
