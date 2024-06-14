@@ -12,6 +12,7 @@ enum DomainError: Error {
   case invalidRequest
   case overcall
   case serverError
+  case getCityListFailed
   
   var alertMessage: String {
     switch self {
@@ -29,6 +30,9 @@ enum DomainError: Error {
         
       case .serverError:
         return "서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요."
+        
+      case .getCityListFailed:
+        return "도시 정보들을 불러오는데 실패했습니다. 문제가 지속되면 고객센터로 문의해주세요."
     }
   }
 }
