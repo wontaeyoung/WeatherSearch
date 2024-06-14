@@ -15,6 +15,8 @@
 		6E865FDF2C1C01E0005DF94F /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6E865FDE2C1C01E0005DF94F /* RxAlamofire */; };
 		6E865FE22C1C0222005DF94F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6E865FE12C1C0222005DF94F /* SnapKit */; };
 		6E865FE42C1C0298005DF94F /* citylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E865FE32C1C0298005DF94F /* citylist.json */; };
+		6E865FEE2C1C077E005DF94F /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E865FED2C1C077E005DF94F /* DTO.swift */; };
+		6E865FF22C1C07CA005DF94F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E865FF12C1C07CA005DF94F /* Entity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		6E865FD22C1BFEDC005DF94F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E865FD42C1BFEDC005DF94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E865FE32C1C0298005DF94F /* citylist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = citylist.json; sourceTree = "<group>"; };
+		6E865FED2C1C077E005DF94F /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
+		6E865FF12C1C07CA005DF94F /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +64,11 @@
 		6E865FC52C1BFEDA005DF94F /* WeatherSearch */ = {
 			isa = PBXGroup;
 			children = (
-				6E865FE92C1C03B9005DF94F /* Shared */,
-				6E865FE82C1C03B5005DF94F /* Resource */,
-				6E865FE72C1C03A4005DF94F /* Presentation */,
-				6E865FE62C1C039D005DF94F /* Data */,
 				6E865FE52C1C0394005DF94F /* App */,
+				6E865FE62C1C039D005DF94F /* Data */,
+				6E865FE72C1C03A4005DF94F /* Presentation */,
+				6E865FE82C1C03B5005DF94F /* Resource */,
+				6E865FE92C1C03B9005DF94F /* Shared */,
 			);
 			path = WeatherSearch;
 			sourceTree = "<group>";
@@ -83,6 +87,7 @@
 		6E865FE62C1C039D005DF94F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				6E865FEA2C1C075D005DF94F /* Model */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -109,6 +114,47 @@
 			children = (
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		6E865FEA2C1C075D005DF94F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6E865FEB2C1C0773005DF94F /* DTO */,
+				6E865FEF2C1C07B1005DF94F /* Entity */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6E865FEB2C1C0773005DF94F /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				6E865FEC2C1C077A005DF94F /* Protocol */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		6E865FEC2C1C077A005DF94F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				6E865FED2C1C077E005DF94F /* DTO.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		6E865FEF2C1C07B1005DF94F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6E865FF02C1C07BD005DF94F /* Protocol */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		6E865FF02C1C07BD005DF94F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				6E865FF12C1C07CA005DF94F /* Entity.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,8 +237,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E865FCB2C1BFEDA005DF94F /* ViewController.swift in Sources */,
+				6E865FF22C1C07CA005DF94F /* Entity.swift in Sources */,
 				6E865FC72C1BFEDA005DF94F /* AppDelegate.swift in Sources */,
 				6E865FC92C1BFEDA005DF94F /* SceneDelegate.swift in Sources */,
+				6E865FEE2C1C077E005DF94F /* DTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
