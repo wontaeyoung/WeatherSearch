@@ -9,20 +9,9 @@ import UIKit
 import SnapKit
 
 final class CardView: BaseView {
-  
-  private let containerView = UIView()
-  
-  override func setHierarchy() {
-    addSubviews(containerView)
-  }
-  
-  override func setConstraint() {
-    containerView.snp.makeConstraints { make in
-      make.edges.equalTo(self).inset(8)
-    }
-  }
-  
   override func setAttribute() {
+    self.backgroundColor = .black.withAlphaComponent(0.2)
+    
     self.configure {
       $0.clipsToBounds = true
       $0.layer.cornerRadius = 12
