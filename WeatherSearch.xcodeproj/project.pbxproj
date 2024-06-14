@@ -36,6 +36,8 @@
 		6E8660222C1C1C8E005DF94F /* JsonCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8660212C1C1C8E005DF94F /* JsonCoder.swift */; };
 		6E8660282C1C1D63005DF94F /* WeatherRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8660272C1C1D63005DF94F /* WeatherRouter.swift */; };
 		6E86602A2C1C1F98005DF94F /* HTTPParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8660292C1C1F97005DF94F /* HTTPParameter.swift */; };
+		6E86602C2C1C20E2005DF94F /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E86602B2C1C20E2005DF94F /* HTTPService.swift */; };
+		6E86602E2C1C2163005DF94F /* Reactive+DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E86602D2C1C2163005DF94F /* Reactive+DataRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		6E8660212C1C1C8E005DF94F /* JsonCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCoder.swift; sourceTree = "<group>"; };
 		6E8660272C1C1D63005DF94F /* WeatherRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRouter.swift; sourceTree = "<group>"; };
 		6E8660292C1C1F97005DF94F /* HTTPParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPParameter.swift; sourceTree = "<group>"; };
+		6E86602B2C1C20E2005DF94F /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
+		6E86602D2C1C2163005DF94F /* Reactive+DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+DataRequest.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,7 @@
 				6E8660072C1C15F6005DF94F /* TimeInterval+.swift */,
 				6E8660092C1C1670005DF94F /* Double+.swift */,
 				6E86600E2C1C17B5005DF94F /* Int+.swift */,
+				6E86602D2C1C2163005DF94F /* Reactive+DataRequest.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 		6E8660172C1C1AAA005DF94F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				6E86602B2C1C20E2005DF94F /* HTTPService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 				6E865FFF2C1C0B4A005DF94F /* WeatherDTO.swift in Sources */,
 				6E865FFD2C1C0A90005DF94F /* CityDTO.swift in Sources */,
 				6E86601B2C1C1B49005DF94F /* Router.swift in Sources */,
+				6E86602E2C1C2163005DF94F /* Reactive+DataRequest.swift in Sources */,
 				6E8660052C1C0FDF005DF94F /* Configurator.swift in Sources */,
 				6E865FF22C1C07CA005DF94F /* Entity.swift in Sources */,
 				6E865FF42C1C087D005DF94F /* City.swift in Sources */,
@@ -388,6 +395,7 @@
 				6E865FC72C1BFEDA005DF94F /* AppDelegate.swift in Sources */,
 				6E86600F2C1C17B5005DF94F /* Int+.swift in Sources */,
 				6E8660022C1C0F82005DF94F /* DateManager.swift in Sources */,
+				6E86602C2C1C20E2005DF94F /* HTTPService.swift in Sources */,
 				6E86601E2C1C1BC2005DF94F /* APIKey.swift in Sources */,
 				6E8660112C1C1838005DF94F /* ForecastResponseDTO.swift in Sources */,
 				6E8660202C1C1C51005DF94F /* HTTPError.swift in Sources */,
