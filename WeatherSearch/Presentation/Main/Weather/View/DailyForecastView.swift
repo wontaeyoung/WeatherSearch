@@ -1,5 +1,5 @@
 //
-//  HourlyForecastView.swift
+//  DailyForecastView.swift
 //  WeatherSearch
 //
 //  Created by 원태영 on 6/14/24.
@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class HourlyForecastView: BaseView {
+final class DailyForecastView: BaseView {
   
   let weathers = BehaviorRelay<[Weather]>(value: [])
   
@@ -18,26 +18,15 @@ final class HourlyForecastView: BaseView {
   private let cardView = CardView()
   private let containerView = UIView()
   private let titleLabel = UILabel().configured {
-    $0.text = "3시간 간격의 일기예보"
+    $0.text = "5일간의 일기예보"
     $0.textColor = .lightGray
     $0.font = .systemFont(ofSize: 14, weight: .regular)
   }
   private let divider = Divider()
-  private lazy var weatherCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).configured {
-    $0.register(WeatherCollectionCell.self, forCellWithReuseIdentifier: WeatherCollectionCell.identifier)
+  private lazy var weatherTableView = UITableView().configured {
+    $0.register(WeatherTableCell.self, forCellReuseIdentifier: WeatherTableCell.identifier)
+    $0.isScrollEnabled = false
     $0.backgroundColor = .clear
-  }
-  
-  private var layout: UICollectionViewFlowLayout {
-    let cellSpacing: CGFloat = 10
-    
-    return UICollectionViewFlowLayout().configured {
-      $0.itemSize = CGSize(width: 40, height: 100)
-      $0.sectionInset = UIEdgeInsets(top: cellSpacing, left: cellSpacing, bottom: cellSpacing, right: cellSpacing)
-      $0.minimumLineSpacing = cellSpacing
-      $0.minimumInteritemSpacing = cellSpacing
-      $0.scrollDirection = .horizontal
-    }
   }
   
   // MARK: - Life Cycle
@@ -47,7 +36,7 @@ final class HourlyForecastView: BaseView {
     containerView.addSubviews(
       titleLabel,
       divider,
-      weatherCollectionView
+      weatherTableView
     )
   }
   
@@ -69,7 +58,7 @@ final class HourlyForecastView: BaseView {
       make.horizontalEdges.equalToSuperview()
     }
     
-    weatherCollectionView.snp.makeConstraints { make in
+    weatherTableView.snp.makeConstraints { make in
       make.top.equalTo(divider.snp.bottom).offset(8)
       make.horizontalEdges.equalToSuperview()
       make.bottom.equalToSuperview()
@@ -78,10 +67,10 @@ final class HourlyForecastView: BaseView {
   
   override func bind() {
     weathers
-      .bind(to: weatherCollectionView.rx.items(
-        cellIdentifier: WeatherCollectionCell.identifier,
-        cellType: WeatherCollectionCell.self)
-      ) { item, weather, cell in
+      .bind(to: weatherTableView.rx.items(
+        cellIdentifier: WeatherTableCell.identifier,
+        cellType: WeatherTableCell.self)
+      ) { row, weather, cell in
         cell.updateUI(with: weather)
       }
       .disposed(by: disposeBag)

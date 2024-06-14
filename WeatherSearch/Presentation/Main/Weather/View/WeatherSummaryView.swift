@@ -22,7 +22,7 @@ final class WeatherSummaryView: BaseView {
   }
   
   private let temperatureLabel = WSLabel().configured {
-    $0.font = .systemFont(ofSize: 80, weight: .semibold)
+    $0.font = .systemFont(ofSize: 70, weight: .semibold)
     $0.textAlignment = .center
   }
   
@@ -48,17 +48,17 @@ final class WeatherSummaryView: BaseView {
   
   override func setConstraint() {
     cityNameLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(24)
+      make.top.equalToSuperview().offset(10)
       make.horizontalEdges.equalToSuperview()
     }
     
     temperatureLabel.snp.makeConstraints { make in
-      make.top.equalTo(cityNameLabel.snp.bottom).offset(0)
+      make.top.equalTo(cityNameLabel.snp.bottom)
       make.horizontalEdges.equalToSuperview()
     }
     
     weatherDescriptionLabel.snp.makeConstraints { make in
-      make.top.equalTo(temperatureLabel.snp.bottom).offset(0)
+      make.top.equalTo(temperatureLabel.snp.bottom)
       make.horizontalEdges.equalToSuperview()
     }
     
