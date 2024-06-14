@@ -6,5 +6,15 @@
 //
 
 enum Constant {
-  static let celsiusBuffer: Double = 273.15
+  enum Weather {
+    static let celsiusBuffer: Double = 273.15
+  }
+  
+  enum File: String {
+    case cityList = "citylist"
+  }
+  
+  enum FileExtension: String {
+    case json
+  }
 }

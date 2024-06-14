@@ -8,12 +8,14 @@
 struct CityDTO: DTO {
   let id: Int
   let name: String
+  let country: String
   let coord: CoordDTO
   
   var toEntity: City {
     return City(
       id: id,
       name: name,
+      country: country,
       lat: coord.lat,
       lon: coord.lon
     )

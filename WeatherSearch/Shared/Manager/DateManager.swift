@@ -35,6 +35,12 @@ extension DateManager {
     return dateFormatter.string(from: interval.date)
   }
   
+  func toString(from date: Date, format: Format) -> String {
+    dateFormatter.dateFormat = format.format
+    
+    return dateFormatter.string(from: date)
+  }
+  
   func startOfDay(when date: Date) -> Date {
     return calendar.startOfDay(for: date)
   }
@@ -44,6 +50,18 @@ extension DateManager {
     let todayEnd = calendar.date(byAdding: .day, value: 1, to: todayStart) ?? Date()
     
     return date >= todayStart && date < todayEnd
+  }
+  
+  func isTomorrow(_ date: Date) -> Bool {
+    let now = Date()
+    let tomorrowStart = calendar.date(byAdding: .day, value: 1, to: startOfDay(when: now)) ?? now
+    let dayAfterTomorrowStart = calendar.date(byAdding: .day, value: 2, to: startOfDay(when: now)) ?? now
+    
+    return date >= tomorrowStart && date < dayAfterTomorrowStart
+  }
+  
+  func isDate(with date: Date, by component: Calendar.Component, equalTo: Int) -> Bool {
+    return calendar.component(component, from: date) == equalTo
   }
   
   enum Format: String {

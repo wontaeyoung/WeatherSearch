@@ -22,4 +22,29 @@ enum HTTPStatusError: Int, Error {
   var statusCode: Int {
     return self.rawValue
   }
+  
+  static func toDomain(_ error: Error) -> DomainError {
+    guard let error = error as? HTTPError else {
+      return .unknown
+    }
+    
+    switch error {
+      case .requestFailed:
+        return .requestFailed
+      case .unexceptedResponse(let status):
+        switch HTTPStatusError(status) {
+          case .unknown:
+            return .unknown
+          
+          case .badRequest, .unauthorized, .forbidden, .notFound:
+            return .invalidRequest
+            
+          case .overcall:
+            return .overcall
+            
+          case .serverError:
+            return .serverError
+        }
+    }
+  }
 }
